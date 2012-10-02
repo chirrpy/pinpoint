@@ -1,3 +1,6 @@
+require 'pinpoint/us_states'
+require 'pinpoint/formats'
+
 module Addressable
   module ClassMethods
     def address(name)
@@ -18,14 +21,14 @@ module Addressable
                   :presence       => {
                     :if           => :#{name}_incomplete? },
                   :inclusion      => {
-                    :in           => US_STATES,
+                    :in           => Pinpoint::US_STATES,
                     :allow_blank  => true }
 
         validates :#{name}_postal_code,
                   :presence       => {
                     :if           => :#{name}_incomplete? },
                   :format         => {
-                    :with         => Chirrpy::FORMATS[:zip_code],
+                    :with         => Pinpoint::FORMATS[:zip_code],
                     :allow_blank  => true }
       VALIDATIONIZATION
 

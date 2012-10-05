@@ -35,4 +35,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency  'guard-rspec',          '~> 2.0.0'
   s.add_development_dependency  'rb-fsevent',           '~> 0.9.1'
   s.add_development_dependency  'awesome_print',        '~> 1.1.0'
+  s.add_development_dependency  'valid_attribute',      '~> 1.3.1'
 end

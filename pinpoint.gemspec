@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.homepage              = 'https://github.com/chirrpy/pinpoint'
 
   s.summary               = %q{(Un)conventional Address Composition for Ruby (and Rails)}
-  s.description           = %q{Handling common address logic (currently only for US addresses but international is planned.}
+  s.description           = %q{Handling common address logic. (currently only for US addresses but international is planned.)}
 
   s.rdoc_options          = ["--charset = UTF-8"]
   s.extra_rdoc_files      = %w[README.md LICENSE]

@@ -1,0 +1,2 @@
+class Pinpoint::AddressFormatter
+end

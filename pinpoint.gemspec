@@ -30,11 +30,7 @@ Gem::Specification.new do |s|
   #= Manifest =#
 
   s.add_development_dependency  'rspec',                '~> 2.11'
-  s.add_development_dependency  'fuubar',               '~> 1.0'
-  s.add_development_dependency  'guard',                '~> 1.4.0'
-  s.add_development_dependency  'guard-rspec',          '~> 2.0.0'
-  s.add_development_dependency  'rb-fsevent',           '~> 0.9.1'
-  s.add_development_dependency  'awesome_print',        '~> 1.1.0'
+  s.add_development_dependency  'rspectacular',         '~> 0.7'
   s.add_development_dependency  'valid_attribute',      '~> 1.3.1'
   s.add_development_dependency  'activemodel',          '~> 3.1.8'
 end

@@ -70,7 +70,7 @@ module Pinpoint
       #
       # Example
       #
-      #   token_map = { ALPHANUMERIC: /[A-Za-z0-9]/
+      #   token_map = { alphanumeric: /[A-Za-z0-9]/
       #
       attr_writer :token_map
 

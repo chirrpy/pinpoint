@@ -8,6 +8,22 @@ module Pinpoint
 
         super
       end
+
+      def message
+        type_to_message_map[type]
+      end
+
+      private
+
+      def type_to_message_map
+        {
+          street:      :street,
+          locality:    :locality,
+          province:    :province,
+          postal_code: :postal_code,
+          country:     :country
+        }
+      end
     end
   end
 end

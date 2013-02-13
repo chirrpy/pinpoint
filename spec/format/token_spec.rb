@@ -15,4 +15,10 @@ describe Pinpoint::Format::Token do
     token.type.should   eql :foo
     token.value.should  eql 'bar'
   end
+
+  it 'can determine the message for a given Token type' do
+    token = Pinpoint::Format::Token.new('street', 'bar')
+
+    token.message.should eql :street
+  end
 end

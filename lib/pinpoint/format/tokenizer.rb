@@ -30,6 +30,8 @@ module Pinpoint
       # Returns nothing
       #
       def each
+        self.tokenable.reset
+
         while current_token = next_token
           yield current_token
         end

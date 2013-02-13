@@ -13,6 +13,10 @@ module Pinpoint
         type_to_message_map[type]
       end
 
+      def to_ary
+        [type, value]
+      end
+
       private
 
       def type_to_message_map

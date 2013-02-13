@@ -7,7 +7,7 @@ describe Pinpoint::Format::Tokenizer do
   let(:tokenizer)       { Pinpoint::Format::Tokenizer.new(tokenable) }
 
   it 'can process a String into Tokens' do
-    tokenizer.to_tokens.should eql [
+    tokenizer.to_token_set.map(&:to_ary).should eql [
       [:group_start,  '('   ],
       [:group_start,  '('   ],
       [:street,       '%s'  ],
@@ -38,7 +38,7 @@ describe Pinpoint::Format::Tokenizer do
     let(:tokenable) { '%%%c' }
 
     it 'parses correctly' do
-      tokenizer.to_tokens.should eql [
+      tokenizer.to_token_set.map(&:to_ary).should eql [
         [:literal,      '%'  ],
         [:country,      '%c' ]
       ]
@@ -60,7 +60,7 @@ describe Pinpoint::Format::Tokenizer do
     let(:tokenable) { '%)%((%((%))%)%%%))' }
 
     it 'parses correctly' do
-      tokenizer.to_tokens.should eql [
+      tokenizer.to_token_set.map(&:to_ary).should eql [
         [:literal,      ')'  ],
         [:literal,      '('  ],
         [:group_start,  '('  ],

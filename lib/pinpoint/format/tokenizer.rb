@@ -1,4 +1,5 @@
 require 'pinpoint/format/parse_error'
+require 'pinpoint/format/token'
 
 ###
 # Public: Has the ability to parse a String for specific token identifiers and
@@ -117,35 +118,35 @@ module Pinpoint
       #
       #   # When a Token can be found
       #   next_token
-      #   # => [:TOKEN_TITLE, 'my_token']
+      #   # => <Token type: :token_type, value: 'my_token'>
       #
       #   # When a Token cannot be found
       #   next_token
-      #   # => ['a', 'a']
+      #   # => Pinpoint::Format::ParseError
       #
       #   # When there is nothing left to process
       #   next_token
       #   # => false
       #
-      # Returns if a Token match can be found, it is an Array containing the
-      # title and text for a Token. If the end of the string is reached, it is
-      # FalseClass.
+      # Returns a Token if a match is found
+      # Returns FalseClass if there is nothing left to process
+      # Raises Pinpoint::Format::ParseError if an unknown Token is encountered
       #
       def next_token
         return if tokenable.eos?
 
         case
-        when text = tokenable.scan(token_map[:literal])      then [:literal,      text]
-        when text = tokenable.scan(token_map[:street])       then [:street,       text]
-        when text = tokenable.scan(token_map[:locality])     then [:locality,     text]
-        when text = tokenable.scan(token_map[:province])     then [:province,     text]
-        when text = tokenable.scan(token_map[:postal_code])  then [:postal_code,  text]
-        when text = tokenable.scan(token_map[:country])      then [:country,      text]
-        when text = tokenable.scan(token_map[:percent])      then [:literal,      '%']
-        when text = tokenable.scan(token_map[:left_paren])   then [:literal,      '(']
-        when text = tokenable.scan(token_map[:right_paren])  then [:literal,      ')']
-        when text = tokenable.scan(token_map[:group_start])  then [:group_start,  text]
-        when text = tokenable.scan(token_map[:group_end])    then [:group_end,    text]
+        when text = tokenable.scan(token_map[:literal]);     Token.new(:literal,     text)
+        when text = tokenable.scan(token_map[:street]);      Token.new(:street,      text)
+        when text = tokenable.scan(token_map[:locality]);    Token.new(:locality,    text)
+        when text = tokenable.scan(token_map[:province]);    Token.new(:province,    text)
+        when text = tokenable.scan(token_map[:postal_code]); Token.new(:postal_code, text)
+        when text = tokenable.scan(token_map[:country]);     Token.new(:country,     text)
+        when text = tokenable.scan(token_map[:percent]);     Token.new(:literal,     '%')
+        when text = tokenable.scan(token_map[:left_paren]);  Token.new(:literal,     '(')
+        when text = tokenable.scan(token_map[:right_paren]); Token.new(:literal,     ')')
+        when text = tokenable.scan(token_map[:group_start]); Token.new(:group_start, text)
+        when text = tokenable.scan(token_map[:group_end]);   Token.new(:group_end,   text)
         else
           raise ParseError, "Cannot parse the remainder of the tokenable string: '#{tokenable.rest}'"
         end

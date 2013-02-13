@@ -19,7 +19,15 @@ module Pinpoint
       end
 
       ##
-      # Public: Yields each successive Token to the given block
+      # Public: From the beginning of the tokenable String, it reads each token
+      # and passes it to the block.
+      #
+      # Yields each successive Token to the given block
+      #
+      # Raises subclasses of Pinpoint::Format::ParseError upon various syntax
+      #   errors
+      #
+      # Returns nothing
       #
       def each
         while current_token = next_token

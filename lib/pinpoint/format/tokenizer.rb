@@ -1,4 +1,5 @@
 require 'pinpoint/format/parse_error'
+require 'pinpoint/format/token_set'
 require 'pinpoint/format/token'
 
 ###
@@ -27,10 +28,13 @@ module Pinpoint
       end
 
       ##
-      # Public: Alias #to_tokens to #to_a since it is more ideomatic for this
-      # class
+      # Public: Wraps the Array of Tokens in a TokenSet
       #
-      alias :to_tokens :to_a
+      # Returns a TokenSet
+      #
+      def to_token_set
+        TokenSet.new(self.to_a)
+      end
 
       protected
 

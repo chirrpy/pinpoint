@@ -19,11 +19,11 @@ module Pinpoint
       private
 
       def group_start_count
-        count { |token| token[0] == :group_start }
+        count { |token| token.type == :group_start }
       end
 
       def group_end_count
-        count { |token| token[0] == :group_end }
+        count { |token| token.type == :group_end }
       end
     end
   end

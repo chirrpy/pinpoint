@@ -141,9 +141,9 @@ module Pinpoint
         when text = tokenable.scan(token_map[:province])     then [:province,     text]
         when text = tokenable.scan(token_map[:postal_code])  then [:postal_code,  text]
         when text = tokenable.scan(token_map[:country])      then [:country,      text]
-        when text = tokenable.scan(token_map[:percent])      then [:percent,      text]
-        when text = tokenable.scan(token_map[:left_paren])   then [:left_paren,   text]
-        when text = tokenable.scan(token_map[:right_paren])  then [:right_paren,  text]
+        when text = tokenable.scan(token_map[:percent])      then [:literal,      '%']
+        when text = tokenable.scan(token_map[:left_paren])   then [:literal,      '(']
+        when text = tokenable.scan(token_map[:right_paren])  then [:literal,      ')']
         when text = tokenable.scan(token_map[:group_start])  then [:group_start,  text]
         when text = tokenable.scan(token_map[:group_end])    then [:group_end,    text]
         else

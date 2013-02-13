@@ -39,7 +39,7 @@ describe Pinpoint::Format::Tokenizer do
 
     it 'parses correctly' do
       tokenizer.to_tokens.should eql [
-        [:percent,      '%%' ],
+        [:literal,      '%'  ],
         [:country,      '%c' ]
       ]
     end
@@ -61,17 +61,17 @@ describe Pinpoint::Format::Tokenizer do
 
     it 'parses correctly' do
       tokenizer.to_tokens.should eql [
-        [:right_paren,  '%)'  ],
-        [:left_paren,   '%('  ],
-        [:group_start,  '('   ],
-        [:left_paren,   '%('  ],
-        [:group_start,  '('   ],
-        [:right_paren,  '%)'  ],
-        [:group_end,    ')'   ],
-        [:right_paren,  '%)'  ],
-        [:percent,      '%%'  ],
-        [:right_paren,  '%)'  ],
-        [:group_end,    ')'   ]
+        [:literal,      ')'  ],
+        [:literal,      '('  ],
+        [:group_start,  '('  ],
+        [:literal,      '('  ],
+        [:group_start,  '('  ],
+        [:literal,      ')'  ],
+        [:group_end,    ')'  ],
+        [:literal,      ')'  ],
+        [:literal,      '%'  ],
+        [:literal,      ')'  ],
+        [:group_end,    ')'  ]
       ]
     end
   end

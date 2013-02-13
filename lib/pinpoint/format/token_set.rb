@@ -3,6 +3,25 @@ require 'pinpoint/format/parse_error'
 module Pinpoint
   module Format
     class TokenSet < Array
+
+      ##
+      # Public: Processes each item in the list by removing it and passing it to
+      # the block.
+      #
+      # At the end of the call, the list will be empty.
+      #
+      # Yields the Token of the iteration
+      #
+      # Returns nothing
+      #
+      def process_each!
+        while size > 0 do
+          token = delete_at(0)
+
+          yield token
+        end
+      end
+
       ##
       # Public: Verifies that the tokens in the list are in good form.
       #

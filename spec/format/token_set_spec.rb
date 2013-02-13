@@ -20,4 +20,24 @@ describe Pinpoint::Format::TokenSet do
 
     expect { token_set.valid? }.to raise_error Pinpoint::Format::UnevenNestingError
   end
+
+  it 'yields each token to the block when processing' do
+    result    = ''
+    token_set = token_set_class.new [group_start_token, group_end_token]
+
+    token_set.process_each! do |token|
+      result << token.type.to_s
+    end
+
+    result.should eql 'group_startgroup_end'
+  end
+
+  it 'deletes itself as it processes' do
+    token_set = token_set_class.new [group_start_token]
+
+    token_set.process_each! do |token|
+    end
+
+    token_set.should be_empty
+  end
 end

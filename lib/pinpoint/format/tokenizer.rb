@@ -1,3 +1,5 @@
+require 'pinpoint/format/parse_error'
+
 ###
 # Public: Has the ability to parse a String for specific token identifiers and
 # can process the resulting Tokens using any of the standard Enumerable messages.
@@ -6,8 +8,6 @@ module Pinpoint
   module Format
     class Tokenizer
       include Enumerable
-
-      class ParseError < StandardError; end
 
       ##
       # Public: Initializes a Tokenizer with a given String

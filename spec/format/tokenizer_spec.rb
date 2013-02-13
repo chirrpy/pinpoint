@@ -50,7 +50,7 @@ describe Pinpoint::Format::Tokenizer do
 
     it 'parses correctly' do
       expect { tokenizer.to_tokens }.to raise_error(
-        Pinpoint::Format::Tokenizer::ParseError,
+        Pinpoint::Format::ParseError,
         "Cannot parse the remainder of the tokenable string: '%io'"
       )
     end

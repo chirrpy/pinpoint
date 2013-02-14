@@ -16,9 +16,10 @@ describe Pinpoint::Format::Token do
     token.value.should  eql 'bar'
   end
 
-  it 'can determine the message for a given Token type' do
-    token = Pinpoint::Format::Token.new('street', 'bar')
-
-    token.message.should eql :street
+  it 'can determine the value that is needed when processing the token' do
+    Pinpoint::Format::Token.new(:group_start).processed_value.should    eql :group_start
+    Pinpoint::Format::Token.new(:group_end).processed_value.should      eql :group_end
+    Pinpoint::Format::Token.new(:literal, 'foo').processed_value.should eql 'foo'
+    Pinpoint::Format::Token.new(:street).processed_value.should         eql :street
   end
 end

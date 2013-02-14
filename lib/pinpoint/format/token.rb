@@ -9,8 +9,17 @@ module Pinpoint
         super
       end
 
-      def message
-        type_to_message_map[type]
+      def processed_value
+        case type
+        when :group_start
+          :group_start
+        when :group_end
+          :group_end
+        when :literal
+          value
+        else
+          message
+        end
       end
 
       def to_ary
@@ -18,6 +27,10 @@ module Pinpoint
       end
 
       private
+
+      def message
+        type_to_message_map[type]
+      end
 
       def type_to_message_map
         {

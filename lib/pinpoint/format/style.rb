@@ -11,7 +11,7 @@ module Pinpoint
       # style - The style information from the Pinpoint YAML definition file.
       #         For example:
       #
-      #             (%s, )((%l, )(%p )%z(, %c)
+      #             (%s, )(%l, )(%p )%z(, %c)
       #
       # Returns a Pinpoint::Format::Style based on the information passed in.
       #
@@ -28,7 +28,7 @@ module Pinpoint
       # Example
       #
       #   # Assuming address is an address-like object and Style was
-      #   # instantiated with '(%s, )((%l, )(%p )%z(, %c)'
+      #   # instantiated with '(%s, )(%l, )(%p )%z(, %c)'
       #   output address
       #   # => '123 First Street, Nashville, TN 37033, United States'
       #

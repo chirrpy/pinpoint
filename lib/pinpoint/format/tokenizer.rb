@@ -83,6 +83,7 @@ module Pinpoint
       def token_map
         @token_map ||= {
           literal:     /[^\(\)%]+/,
+          name:        /%n/,
           street:      /%s/,
           locality:    /%l/,
           province:    /%p/,
@@ -151,6 +152,7 @@ module Pinpoint
 
         case
         when text = tokenable.scan(token_map[:literal]);     Token.new(:literal,     text)
+        when text = tokenable.scan(token_map[:name]);        Token.new(:name,        text)
         when text = tokenable.scan(token_map[:street]);      Token.new(:street,      text)
         when text = tokenable.scan(token_map[:locality]);    Token.new(:locality,    text)
         when text = tokenable.scan(token_map[:province]);    Token.new(:province,    text)

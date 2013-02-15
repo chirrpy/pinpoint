@@ -34,6 +34,7 @@ module Pinpoint
 
       def type_to_message_map
         {
+          name:        :name,
           street:      :street,
           locality:    :locality,
           province:    :province,

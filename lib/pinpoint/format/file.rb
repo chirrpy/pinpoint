@@ -31,7 +31,7 @@ module Pinpoint
       private
 
       def self.format_yaml_contents(country)
-        relative_path = "../../definitions/#{country}.yml"
+        relative_path = "../../config/formats/#{country}.yml"
         filename      = ::File.expand_path(relative_path, __FILE__)
 
         ::File.read(filename)

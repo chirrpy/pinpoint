@@ -1,5 +1,5 @@
-require 'pinpoint/us_states'
-require 'pinpoint/formats'
+require 'pinpoint/config/us_states'
+require 'pinpoint/config/patterns'
 
 module Pinpoint
   module Validations

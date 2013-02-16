@@ -1,0 +1,21 @@
+one_line_with_name:   '(%n, )(%s, )(%l, )(%p )%z(, %c)'
+one_line:             '(%s, )(%l, )(%p )%z(, %c)'
+multi_line:           "(%s\n)((%l, )(%p )%z\n)(%c\n)"
+multi_line_with_name: "(%n\n)(%s\n)((%l, )(%p )%z\n)(%c\n)"
+html:                 |
+                      <address>
+                        <span class="section">
+                          <span class="name">%n</span>
+                        </span>
+                        <span class="section">
+                          <span class="street">%s</span>
+                        </span>
+                        <span class="section">
+                          <span class="locality">%l</span>
+                          <span class="province">%p</span>
+                          <span class="postal_code">%z</span>
+                        </span>
+                        <span class="section">
+                          <span class="country">%c</span>
+                        </span>
+                      </address>

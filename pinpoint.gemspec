@@ -29,8 +29,8 @@ Gem::Specification.new do |s|
   s.require_paths         = ["lib"]
   #= Manifest =#
 
-  s.add_development_dependency  'rspec',                '~> 2.11'
+  s.add_development_dependency  'rspec',                '~> 2.12'
   s.add_development_dependency  'rspectacular',         '~> 0.7'
   s.add_development_dependency  'valid_attribute',      '~> 1.3.1'
-  s.add_development_dependency  'activemodel',          '~> 3.1.8'
+  s.add_development_dependency  'activemodel',          '~> 3.2'
 end

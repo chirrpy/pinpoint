@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'rspectacular'
+require 'pinpoint/address'
 
 describe 'Pinpoint::Address' do
   let(:address) { Pinpoint::Address.new }

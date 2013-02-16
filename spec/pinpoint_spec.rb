@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'rspectacular'
+require 'pinpoint'
 
 class Pinpointable
   include Pinpoint

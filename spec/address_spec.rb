@@ -7,6 +7,8 @@ describe 'Pinpoint::Address' do
   it { address.respond_to?(:region=).should       be_true }
   it { address.respond_to?(:province).should      be_true }
   it { address.respond_to?(:province=).should     be_true }
+  it { address.respond_to?(:locality).should      be_true }
+  it { address.respond_to?(:locality=).should     be_true }
   it { address.respond_to?(:postal_code).should   be_true }
   it { address.respond_to?(:postal_code=).should  be_true }
   it { address.respond_to?(:postalcode).should    be_true }

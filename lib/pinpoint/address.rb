@@ -10,6 +10,10 @@ module Pinpoint
                   :latitude,
                   :longitude
 
+    # City Aliases
+    alias :locality       :city
+    alias :locality=      :city=
+
     # State Aliases
     alias :region         :state
     alias :region=        :state=

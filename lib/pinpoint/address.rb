@@ -1,3 +1,5 @@
+require 'pinpoint/address_formatter'
+
 module Pinpoint
   class Address
     attr_accessor :name,
@@ -54,6 +56,10 @@ module Pinpoint
       blank?(city)        &&
       blank?(state)       &&
       blank?(zip_code)
+    end
+
+    def to_s(options = { :country => :us, :format => :one_line })
+      AddressFormatter.format(self, options)
     end
 
   private

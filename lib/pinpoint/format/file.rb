@@ -3,7 +3,7 @@ require 'pinpoint/format/style'
 
 module Pinpoint
   module Format
-    class DefinitionFile
+    class File
 
       ##
       # Public: Loads the definition for the given country from the appropriate
@@ -31,10 +31,10 @@ module Pinpoint
       private
 
       def self.definition_yaml_contents(country)
-        relative_path       = "../../definitions/#{country}.yml"
-        definition_filename = File.expand_path(relative_path, __FILE__)
+        relative_path = "../../definitions/#{country}.yml"
+        filename      = ::File.expand_path(relative_path, __FILE__)
 
-        File.read(definition_filename)
+        ::File.read(filename)
       end
 
       def self.raw_style_data(country)

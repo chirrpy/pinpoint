@@ -1,4 +1,4 @@
-require 'pinpoint/format/definition_file'
+require 'pinpoint/format/file'
 
 module Pinpoint
   module Format
@@ -28,7 +28,7 @@ module Pinpoint
       #
       def self.lookup_by_country(country)
         definition = self.new
-        definition.styles = Pinpoint::Format::DefinitionFile.styles_for(country)
+        definition.styles = Pinpoint::Format::File.styles_for(country)
         definition
       end
 

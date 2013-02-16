@@ -6,8 +6,8 @@ describe Pinpoint::Format::Definition do
   let(:definition)       { definition_class.new }
 
   it 'can lookup a definition by country' do
-    Pinpoint::Format::DefinitionFile.should_receive(:styles_for)
-                                    .and_return 'styles'
+    Pinpoint::Format::File.should_receive(:styles_for)
+                          .and_return 'styles'
 
     definition = definition_class.lookup_by_country(:us)
 

@@ -1,4 +1,4 @@
-require 'pinpoint/address_formatter'
+require 'pinpoint/formatter'
 
 module Pinpoint
   class Address
@@ -59,7 +59,7 @@ module Pinpoint
     end
 
     def to_s(options = { :country => :us, :format => :one_line })
-      AddressFormatter.format(self, options)
+      Formatter.format(self, options)
     end
 
   private

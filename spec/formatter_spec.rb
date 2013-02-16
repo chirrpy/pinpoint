@@ -1,6 +1,6 @@
 require 'rspectacular'
 require 'ostruct'
-require 'pinpoint/address_formatter'
+require 'pinpoint/formatter'
 
 
 class Address < Struct.new( :name,
@@ -14,7 +14,7 @@ class Address < Struct.new( :name,
                             :longitude)
 end
 
-describe Pinpoint::AddressFormatter do
+describe Pinpoint::Formatter do
   let(:address) { Address.new 'Kwik-E-Mart',
                               '123 Apu Lane',
                               'Springfield',
@@ -29,7 +29,7 @@ describe Pinpoint::AddressFormatter do
     it 'can format it in one line US format' do
       expected = "Kwik-E-Mart, 123 Apu Lane, Springfield, NW 12345, United States"
 
-      Pinpoint::AddressFormatter.format(address, country: :us,
+      Pinpoint::Formatter.format(address, country: :us,
                                                  style:   :one_line_with_name)
                                 .should eql(expected)
     end
@@ -42,7 +42,7 @@ Springfield, NW 12345
 United States
       MULTILINE
 
-      Pinpoint::AddressFormatter.format(address, country: :us,
+      Pinpoint::Formatter.format(address, country: :us,
                                                  style:   :multi_line_with_name)
                                 .should eql(expected)
     end
@@ -67,7 +67,7 @@ United States
 </address>
       MULTILINE
 
-      Pinpoint::AddressFormatter.format(address, country: :us,
+      Pinpoint::Formatter.format(address, country: :us,
                                                  style:   :html)
                                 .should eql(expected)
     end
@@ -103,7 +103,7 @@ United States
 </address>
         MULTILINE
 
-        Pinpoint::AddressFormatter.format(address, country: :us,
+        Pinpoint::Formatter.format(address, country: :us,
                                                   style:   :html)
                                   .should eql(expected)
       end

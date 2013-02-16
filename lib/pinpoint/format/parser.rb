@@ -10,20 +10,20 @@ module Pinpoint
 
       ##
       # Public: Initializes a Parser and converts the passed String into
-      # a TokenSet that will be utilized when it is parsed.
+      # a TokenList that will be utilized when it is parsed.
       #
       # Raises a ParseError if the Tokenizer cannot tokenize the String
       # Returns a Parser
       #
       def initialize(string)
-        self.tokens = Pinpoint::Format::Tokenizer.new(string).to_token_set
+        self.tokens = Pinpoint::Format::Tokenizer.new(string).to_token_list
       end
 
       ##
-      # Public: Provides a way to convert a TokenSet into a tree repersenting
+      # Public: Provides a way to convert a TokenList into a tree repersenting
       # groups, message names, and String literals.
       #
-      # If the TokenSet is not valid, a form of ParseError is raised.
+      # If the TokenList is not valid, a form of ParseError is raised.
       #
       # Example
       #
@@ -59,29 +59,29 @@ module Pinpoint
       protected
 
       ##
-      # Protected: Reads the TokenSet associated with the Parser
+      # Protected: Reads the TokenList associated with the Parser
       #
       attr_accessor :tokens
 
       ##
-      # Protected: Can recursively process the TokenSet into an Array containing
+      # Protected: Can recursively process the TokenList into an Array containing
       # the parse tree.
       #
       # See also Parser#parse
       #
       # Returns an Array containing the parse tree structure
       #
-      def process(token_set)
+      def process(token_list)
         result = []
 
-        token_set.process_each! do |token|
+        token_list.process_each! do |token|
           case token.processed_value
           when :group_start
-            token_set, intermediate_result = process(token_set)
+            token_list, intermediate_result = process(token_list)
 
             result << intermediate_result
           when :group_end
-            return [token_set, result]
+            return [token_list, result]
           else
             result << token.processed_value
           end

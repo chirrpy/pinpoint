@@ -1,5 +1,5 @@
 require 'pinpoint/format/parse_error'
-require 'pinpoint/format/token_set'
+require 'pinpoint/format/token_list'
 require 'pinpoint/format/token'
 
 ###
@@ -38,12 +38,12 @@ module Pinpoint
       end
 
       ##
-      # Public: Wraps the Array of Tokens in a TokenSet
+      # Public: Wraps the Array of Tokens in a TokenList
       #
-      # Returns a TokenSet
+      # Returns a TokenList
       #
-      def to_token_set
-        TokenSet.new(self.to_a)
+      def to_token_list
+        TokenList.new(self.to_a)
       end
 
       protected

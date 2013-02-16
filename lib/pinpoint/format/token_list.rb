@@ -2,7 +2,7 @@ require 'pinpoint/format/parse_error'
 
 module Pinpoint
   class Format
-    class TokenSet < Array
+    class TokenList < Array
 
       ##
       # Public: Processes each item in the list by removing it and passing it to

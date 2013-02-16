@@ -2,21 +2,21 @@ require 'pinpoint/format/parser'
 require 'active_support/core_ext/string/output_safety'
 
 module Pinpoint
-  module Format
+  class Format
     class Style
 
       ##
       # Public: Processes the style information gleaned from the Pinpoint YAML
-      # definition format and generates a Style from it.
+      # format and generates a Style from it.
       #
-      # style - The style information from the Pinpoint YAML definition file.
-      #         For example:
+      # style - The style information from the Pinpoint YAML format file. For
+      #         example:
       #
       #             (%s, )(%l, )(%p )%z(, %c)
       #
       # Returns a Pinpoint::Format::Style based on the information passed in.
       #
-      def self.from_definition_yaml(style_definition)
+      def self.from_yaml(style_definition)
         style = self.new
         style.send(:structure=, Format::Parser.new(style_definition).parse)
         style

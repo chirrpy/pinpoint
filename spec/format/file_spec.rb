@@ -5,11 +5,11 @@ describe Pinpoint::Format::File do
   let(:file_class) { Pinpoint::Format::File }
 
   it 'can retrieve Styles for a given country' do
-    File.should_receive(:read).and_return <<-DEFINITION_YAML
+    File.should_receive(:read).and_return <<-FORMAT_YAML
       one_line: 'foo'
       multi_line: 'bar'
       html: 'baz'
-    DEFINITION_YAML
+    FORMAT_YAML
 
     styles = file_class.styles_for(:us)
 

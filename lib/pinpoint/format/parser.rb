@@ -5,7 +5,7 @@ require 'pinpoint/format/tokenizer'
 # a Style to render some output.
 #
 module Pinpoint
-  module Format
+  class Format
     class Parser
 
       ##

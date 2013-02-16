@@ -1,5 +1,5 @@
 module Pinpoint
-  module Format
+  class Format
     class ParseError          < StandardError; end
     class UnevenNestingError  < ParseError; end
   end

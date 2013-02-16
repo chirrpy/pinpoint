@@ -7,7 +7,7 @@ require 'pinpoint/format/token'
 # can process the resulting Tokens using any of the standard Enumerable messages.
 #
 module Pinpoint
-  module Format
+  class Format
     class Tokenizer
       include Enumerable
 

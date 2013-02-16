@@ -2,11 +2,11 @@ require 'yaml'
 require 'pinpoint/format/style'
 
 module Pinpoint
-  module Format
+  class Format
     class File
 
       ##
-      # Public: Loads the definition for the given country from the appropriate
+      # Public: Loads the format for the given country from the appropriate
       # YAML file.
       #
       # It then converts the parsed YAML into Pinpoint::Format::Style objects which
@@ -14,7 +14,7 @@ module Pinpoint
       #
       # country - A Symbol representing the lowercased two-character [ISO
       #           3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country code for
-      #           the country you are trying to load a format definition for.
+      #           the country you are trying to load a format for.
       #
       # Returns a Hash containing symbolized keys for the style names and values
       # containing Styles.
@@ -24,13 +24,13 @@ module Pinpoint
           style_name = style_definition[0]
           style      = style_definition[1]
 
-          hash[style_name.to_sym] = Format::Style.from_definition_yaml(style)
+          hash[style_name.to_sym] = Format::Style.from_yaml(style)
         end
       end
 
       private
 
-      def self.definition_yaml_contents(country)
+      def self.format_yaml_contents(country)
         relative_path = "../../definitions/#{country}.yml"
         filename      = ::File.expand_path(relative_path, __FILE__)
 
@@ -38,7 +38,7 @@ module Pinpoint
       end
 
       def self.raw_style_data(country)
-        YAML::load(definition_yaml_contents(country))
+        YAML::load(format_yaml_contents(country))
       end
     end
   end

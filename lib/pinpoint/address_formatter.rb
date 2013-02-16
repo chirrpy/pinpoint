@@ -15,7 +15,7 @@ class Pinpoint::AddressFormatter
   #                      letter ISO code as a Symbol for a country will use that
   #                      country's format. (defaults to :us)
   #           :style   - Can be a Symbol which relates to any style in the
-  #                      definition file that is loaded. Default formats are:
+  #                      format file that is loaded. Default formats are:
   #
   #                        * :one_line
   #                        * :one_line_with_name
@@ -68,17 +68,17 @@ class Pinpoint::AddressFormatter
   #   #     </address>'
   #
   def self.format(address, options = {})
-    country       = options.fetch(:country, :us)
-    style         = options.fetch(:style,   :one_line)
+    country = options.fetch(:country, :us)
+    style   = options.fetch(:style,   :one_line)
 
-    definition    = definitions[country]
+    format  = formats[country]
 
-    definition.output address, :style => style
+    format.output address, :style => style
   end
 
   private
 
-  def self.definitions
-    @definitions ||= Pinpoint::Format::DefinitionSet.new
+  def self.formats
+    @formats ||= Pinpoint::Format::DefinitionSet.new
   end
 end

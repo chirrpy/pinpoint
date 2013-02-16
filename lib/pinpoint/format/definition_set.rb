@@ -1,7 +1,7 @@
-require 'pinpoint/format/definition'
+require 'pinpoint/format'
 
 module Pinpoint
-  module Format
+  class Format
     class DefinitionSet
       include Enumerable
 
@@ -9,44 +9,44 @@ module Pinpoint
       # Public: Initializes a new empty DefinitionSet
       #
       def initialize
-        self.definitions = Hash.new
+        self.formats = Hash.new
       end
 
       ##
-      # Public: Retrieves a Definition for the given country.
+      # Public: Retrieves a Format for the given country.
       #
-      # If the country's Definition has already been retrieved, it is returned,
+      # If the country's Format has already been retrieved, it is returned,
       # otherwise it is looked up.
       #
       # country - The two letter ISO_3166-1 code for the country you're looking
-      #           up the definition for.
+      #           up the format for.
       #
       # Example
       #
       #   [:us]
-      #   # => <Definition>
+      #   # => <Format>
       #
-      # Returns a Definition which corresponds to the given country.
+      # Returns a Format which corresponds to the given country.
       #
       def [](country)
         country = country.to_sym
 
         get(country) ||
-        set(country, Pinpoint::Format::Definition.lookup_by_country(country))
+        set(country, Pinpoint::Format.lookup_by_country(country))
       end
 
       protected
 
-      attr_accessor :definitions
+      attr_accessor :formats
 
       private
 
       def get(country)
-        self.definitions[country]
+        self.formats[country]
       end
 
-      def set(country, definition)
-        self.definitions[country] = definition
+      def set(country, format)
+        self.formats[country] = format
       end
     end
   end

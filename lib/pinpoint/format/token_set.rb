@@ -1,7 +1,7 @@
 require 'pinpoint/format/parse_error'
 
 module Pinpoint
-  module Format
+  class Format
     class TokenSet < Array
 
       ##

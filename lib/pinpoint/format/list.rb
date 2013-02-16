@@ -2,11 +2,11 @@ require 'pinpoint/format'
 
 module Pinpoint
   class Format
-    class DefinitionSet
+    class List
       include Enumerable
 
       ##
-      # Public: Initializes a new empty DefinitionSet
+      # Public: Initializes a new empty List
       #
       def initialize
         self.formats = Hash.new

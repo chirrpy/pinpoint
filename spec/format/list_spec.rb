@@ -1,15 +1,15 @@
 require 'rspectacular'
-require 'pinpoint/format/definition_set'
+require 'pinpoint/format/list'
 
-describe Pinpoint::Format::DefinitionSet do
-  let(:definition_set_class) { Pinpoint::Format::DefinitionSet }
-  let(:definition_set)       { definition_set_class.new }
+describe Pinpoint::Format::List do
+  let(:format_list_class) { Pinpoint::Format::List }
+  let(:format_list)       { format_list_class.new }
 
   it 'can find formats for a country that it has not already loaded' do
     Pinpoint::Format.should_receive(:lookup_by_country)
                     .with(:us)
 
-    definition_set[:us]
+    format_list[:us]
   end
 
   it 'can memoize formats for performance' do
@@ -18,7 +18,7 @@ describe Pinpoint::Format::DefinitionSet do
                     .with(:us)
                     .and_return('format')
 
-    definition_set[:us]
-    definition_set[:us]
+    format_list[:us]
+    format_list[:us]
   end
 end

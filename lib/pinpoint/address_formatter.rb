@@ -1,4 +1,4 @@
-require 'pinpoint/format/definition_set'
+require 'pinpoint/format/list'
 
 class Pinpoint::AddressFormatter
 
@@ -79,6 +79,6 @@ class Pinpoint::AddressFormatter
   private
 
   def self.formats
-    @formats ||= Pinpoint::Format::DefinitionSet.new
+    @formats ||= Pinpoint::Format::List.new
   end
 end

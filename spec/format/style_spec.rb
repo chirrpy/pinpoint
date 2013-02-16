@@ -39,6 +39,14 @@ e
     MULTILINE
   end
 
+  it 'can safely output unsafe HTML' do
+    style_definition = "<span>%s</span>"
+    style            = style_class.from_definition_yaml style_definition
+    address          = stub(:street => "<script>alert('Gotcha!');</script>")
+
+    style.output(address).should eql '<span>&lt;script&gt;alert(&#x27;Gotcha!&#x27;);&lt;/script&gt;</span>'
+  end
+
   it 'understands not to output a grouping without alphanumeric characters' do
     style_definition = '(%s, )'
     style            = style_class.from_definition_yaml style_definition

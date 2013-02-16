@@ -1,4 +1,5 @@
 require 'pinpoint/format/parser'
+require 'active_support/core_ext/string/output_safety'
 
 module Pinpoint
   module Format
@@ -56,18 +57,24 @@ module Pinpoint
       # Returns a String containing data from the context and String literals
       #
       def process(structure, context)
-        processed_structure = structure.each_with_object('') do |token, result|
+        processed = "".html_safe
+
+        structure.each_with_object(processed) do |token, result|
           result << case token
                     when Array
                       process(token, context)
                     when Symbol
                       context.public_send(token)
                     when String
-                      token
+                      token.html_safe
                     end
         end
 
-        processed_structure.match(/\A[^A-Za-z0-9]*\z/) ? '' : processed_structure
+        processed.match(no_alphanumerics) ? "".html_safe : processed
+      end
+
+      def no_alphanumerics
+        /\A[^A-Za-z0-9]*\z/
       end
     end
   end

@@ -23,6 +23,22 @@ describe Pinpoint::Format::Style do
     style.output(address).should eql 'a, b, c d, e'
   end
 
+  it 'can output an address based on a style with newlines' do
+    style_definition = "((%s\n)((%l, ))(%p )%z\n)(%c\n)"
+    style            = style_class.from_definition_yaml style_definition
+    address          = stub(street:       'a',
+                            locality:     'b',
+                            province:     'c',
+                            postal_code:  'd',
+                            country:      'e')
+
+    style.output(address).should eql <<-MULTILINE
+a
+b, c d
+e
+    MULTILINE
+  end
+
   it 'understands not to output a grouping without alphanumeric characters' do
     style_definition = '(%s, )'
     style            = style_class.from_definition_yaml style_definition

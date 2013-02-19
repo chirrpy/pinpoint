@@ -2,15 +2,19 @@ require 'pinpoint/formatter'
 
 module Pinpoint
   class Address
-    attr_accessor :name,
-                  :street,
-                  :city,
-                  :state,
-                  :county,
-                  :zip_code,
-                  :country,
-                  :latitude,
-                  :longitude
+    ATTRIBUTE_NAMES = [
+        :name,
+        :street,
+        :city,
+        :state,
+        :county,
+        :postal_code,
+        :country,
+        :latitude,
+        :longitude
+      ]
+
+    attr_accessor *ATTRIBUTE_NAMES
 
     # City Aliases
     alias :locality       :city

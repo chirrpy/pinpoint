@@ -2,7 +2,7 @@ require 'rspectacular'
 require 'pinpoint'
 
 class Pinpointable
-  include Pinpoint
+  extend Pinpoint::Composable
 
   attr_accessor :address_name,
                 :address_street_and_premises,

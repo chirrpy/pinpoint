@@ -3,8 +3,8 @@ require 'pinpoint/config/patterns'
 
 module Pinpoint
   module Validations
-    def install_validations(name)
-      instance_eval <<-VALIDATIONIZATION
+    def self.define(object, name)
+      object.instance_eval <<-VALIDATIONIZATION
         validates :#{name}_name,
                   :length         => {
                     :maximum      => 140 }

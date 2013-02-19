@@ -5,7 +5,7 @@ require 'pinpoint'
 
 class ValidatablePinpointable
   include ActiveModel::Validations
-  include Pinpoint
+  extend Pinpoint::Composable
 
   attr_accessor :address_name,
                 :address_street_and_premises,
@@ -19,7 +19,7 @@ end
 
 class UnvalidatablePinpointable
   include ActiveModel::Validations
-  include Pinpoint
+  extend Pinpoint::Composable
 
   attr_accessor :address_name,
                 :address_street_and_premises,

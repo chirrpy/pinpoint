@@ -4,7 +4,7 @@ module Pinpoint
   class Address
     ATTRIBUTE_NAMES = [
         :name,
-        :street,
+        :street_and_premises,
         :city,
         :state,
         :county,
@@ -19,6 +19,10 @@ module Pinpoint
     # City Aliases
     alias :locality       :city
     alias :locality=      :city=
+
+    # Street Aliases
+    alias :street         :street_and_premises
+    alias :street=        :street_and_premises=
 
     # State Aliases
     alias :region         :state
@@ -45,7 +49,7 @@ module Pinpoint
     end
 
     def complete?
-      present?(street)    &&
+      present?(street_and_premises) &&
       present?(city)      &&
       present?(state)     &&
       present?(zip_code)
@@ -56,7 +60,7 @@ module Pinpoint
     end
 
     def empty?
-      blank?(street)      &&
+      blank?(street_and_premises) &&
       blank?(city)        &&
       blank?(state)       &&
       blank?(zip_code)

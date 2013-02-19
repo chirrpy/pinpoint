@@ -33,8 +33,6 @@ module Pinpoint
     # Zip Code Aliases
     alias :zip_code       :postal_code
     alias :zip_code=      :postal_code=
-    alias :zipcode        :postal_code
-    alias :zipcode=       :postal_code=
     alias :zip            :postal_code
     alias :zip=           :postal_code=
 

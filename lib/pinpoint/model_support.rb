@@ -1,3 +1,4 @@
+require 'active_support/core_ext/object/blank'
 require 'pinpoint/address'
 
 module Pinpoint
@@ -12,8 +13,9 @@ module Pinpoint
     #                         field pair to create (eg: #venue and #venue=).
     #           :prefix     - If set, then all fields which make up the Address
     #                         will be prefixed with that string (eg: #venue_city
-    #                         instead of just #city) (defaults to an empty
-    #                         String).
+    #                         instead of just #city) If you do not want field
+    #                         names to be prefixed simply set it to false.
+    #                         (defaults to the field name).
     #
     # Example
     #
@@ -27,7 +29,8 @@ module Pinpoint
     # Returns nothing
     #
     def self.define_address_accessors(object, options = {})
-      options[:prefix]         ||= options.fetch(:prefix, '')
+      field_name                 = options.fetch(:field_name)
+      options[:prefix]           = options.fetch(:prefix, field_name)
       options[:address_fields] ||= find_address_fields(object, options)
 
       define_address_reader(object, options)
@@ -50,13 +53,15 @@ module Pinpoint
     # Returns nothing
     #
     def self.define_address_reader(object, options)
-      field_name     = options.fetch(:field_name)
-      address_fields = options.fetch(:address_fields).fetch(:reader_fields)
+      field_name       = options.fetch(:field_name)
+      attribute_fields = options.fetch(:address_fields).fetch(:base_fields)
+      reader_fields    = options.fetch(:address_fields).fetch(:reader_fields)
+      field_pairs      = attribute_fields.zip reader_fields
 
       # TODO: Memoize
       object.send(:define_method, field_name) do
-        address_fields_and_values = address_fields.map do |field|
-                                      [field.to_sym, send(field)]
+        address_fields_and_values = field_pairs.map do |field_pair|
+                                      [field_pair[0], send(field_pair[1])]
                                     end
         address_fields_and_values = Hash[address_fields_and_values]
 
@@ -118,7 +123,7 @@ module Pinpoint
     # Returns a Hash of 'base', 'reader' and 'writer' fields.
     #
     def self.find_address_fields(object, options)
-      prefix             = options[:prefix].empty? ? '' : "#{options[:prefix]}_"
+      prefix             = options[:prefix].blank? ? '' : "#{options[:prefix]}_"
       address_attrs      = Pinpoint::Address::ATTRIBUTE_NAMES
       reader_field_names = address_attrs.map { |field| :"#{prefix}#{field}" }
       writer_field_names = address_attrs.map { |field| :"#{prefix}#{field}=" }
@@ -128,7 +133,8 @@ module Pinpoint
       base_fields        = writer_fields.map do |field|
                              field.to_s.
                                    gsub(/\A#{prefix}/, '').
-                                   gsub(/=\z/, '')
+                                   gsub(/=\z/, '').
+                                   to_sym
                            end
 
       {

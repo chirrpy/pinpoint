@@ -5,7 +5,7 @@ module Pinpoint
   module Validations
     def self.define(object, options)
       name   = options.fetch(:field_name)
-      prefix = options.fetch(:prefix, '').empty? ? '' : "#{options[:prefix]}_"
+      prefix = options.fetch(:prefix, name).blank? ? '' : "#{options[:prefix]}_"
 
       object.instance_eval <<-VALIDATIONIZATION
         validates :#{prefix}name,

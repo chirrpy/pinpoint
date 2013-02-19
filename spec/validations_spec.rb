@@ -14,7 +14,8 @@ class ValidatablePinpointable
                 :postal_code,
                 :country
 
-  pinpoint :address, :validate => true
+  pinpoint :address, prefix:   false,
+                     validate: true
 end
 
 class UnvalidatablePinpointable

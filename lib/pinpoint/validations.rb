@@ -3,32 +3,35 @@ require 'pinpoint/config/patterns'
 
 module Pinpoint
   module Validations
-    def self.define(object, name)
+    def self.define(object, options)
+      name   = options.fetch(:field_name)
+      prefix = options.fetch(:prefix, '').empty? ? '' : "#{options[:prefix]}_"
+
       object.instance_eval <<-VALIDATIONIZATION
-        validates :#{name}_name,
+        validates :#{prefix}name,
                   :length         => {
                     :maximum      => 140 }
 
-        validates :#{name}_street_and_premises,
+        validates :#{prefix}street_and_premises,
                   :presence       => {
                     :if           => :#{name}_incomplete? },
                   :length         => {
                     :maximum      => 255 }
 
-        validates :#{name}_city,
+        validates :#{prefix}city,
                   :presence       => {
                     :if           => :#{name}_incomplete? },
                   :length         => {
                     :maximum      => 60 }
 
-        validates :#{name}_state_or_province,
+        validates :#{prefix}state,
                   :presence       => {
                     :if           => :#{name}_incomplete? },
                   :inclusion      => {
                     :in           => Pinpoint::US_STATES,
                     :allow_blank  => true }
 
-        validates :#{name}_postal_code,
+        validates :#{prefix}postal_code,
                   :presence       => {
                     :if           => :#{name}_incomplete? },
                   :format         => {

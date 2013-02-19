@@ -50,8 +50,8 @@ module Pinpoint
 
     def complete?
       present?(street_and_premises) &&
-      present?(city)      &&
-      present?(state)     &&
+      present?(city)                &&
+      present?(state)               &&
       present?(postal_code)
     end
 
@@ -61,8 +61,8 @@ module Pinpoint
 
     def empty?
       blank?(street_and_premises) &&
-      blank?(city)        &&
-      blank?(state)       &&
+      blank?(city)                &&
+      blank?(state)               &&
       blank?(postal_code)
     end
 

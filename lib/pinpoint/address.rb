@@ -31,12 +31,12 @@ module Pinpoint
     alias :province=      :state=
 
     # Zip Code Aliases
-    alias :postal_code    :zip_code
-    alias :postal_code=   :zip_code=
-    alias :postalcode     :zip_code
-    alias :postalcode=    :zip_code=
-    alias :zip            :zip_code
-    alias :zip=           :zip_code=
+    alias :zip_code       :postal_code
+    alias :zip_code=      :postal_code=
+    alias :zipcode        :postal_code
+    alias :zipcode=       :postal_code=
+    alias :zip            :postal_code
+    alias :zip=           :postal_code=
 
     # County Aliases
     alias :district       :county
@@ -52,7 +52,7 @@ module Pinpoint
       present?(street_and_premises) &&
       present?(city)      &&
       present?(state)     &&
-      present?(zip_code)
+      present?(postal_code)
     end
 
     def incomplete?
@@ -63,7 +63,7 @@ module Pinpoint
       blank?(street_and_premises) &&
       blank?(city)        &&
       blank?(state)       &&
-      blank?(zip_code)
+      blank?(postal_code)
     end
 
     def to_s(options = { :country => :us, :format => :one_line })

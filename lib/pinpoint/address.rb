@@ -1,7 +1,10 @@
 require 'pinpoint/formatter'
+require 'pinpoint/mapable'
 
 module Pinpoint
   class Address
+    include Mapable
+
     ATTRIBUTE_NAMES = [
         :name,
         :street_and_premises,

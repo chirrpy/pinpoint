@@ -36,7 +36,7 @@ module Pinpoint
     # Returns nothing
     #
     def pinpoint(field_name, options = {})
-      options[:field_field_name] = field_name
+      options[:field_name] = field_name
 
       if options[:validate]
         Pinpoint::Validations.define(self, options)

@@ -63,6 +63,7 @@ module Pinpoint
         address_fields_and_values = field_pairs.map do |field_pair|
                                       [field_pair[0], send(field_pair[1])]
                                     end
+
         address_fields_and_values = Hash[address_fields_and_values]
 
         Pinpoint::Address.new(address_fields_and_values)
@@ -151,7 +152,7 @@ module Pinpoint
     # Returns an Array of common methods
     #
     def self.find_existing_methods(object, fields)
-      fields & object.public_instance_methods
+      fields & object.new.public_methods
     end
   end
 end

@@ -50,7 +50,8 @@ module Pinpoint
       present?(street_and_premises) &&
       present?(city)                &&
       present?(state)               &&
-      present?(postal_code)
+      present?(postal_code)         &&
+      present?(country)
     end
 
     def incomplete?
@@ -61,7 +62,8 @@ module Pinpoint
       blank?(street_and_premises) &&
       blank?(city)                &&
       blank?(state)               &&
-      blank?(postal_code)
+      blank?(postal_code)         &&
+      blank?(country)
     end
 
     def to_s(options = { :country => :us, :format => :one_line })

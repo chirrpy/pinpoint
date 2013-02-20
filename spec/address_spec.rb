@@ -54,7 +54,8 @@ describe 'Pinpoint::Address' do
           street:     '',
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -69,7 +70,8 @@ describe 'Pinpoint::Address' do
           street:     nil,
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -84,7 +86,8 @@ describe 'Pinpoint::Address' do
           street:     '919 Broadway',
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -99,7 +102,8 @@ describe 'Pinpoint::Address' do
           street:     nil,
           city:       nil,
           state:      nil,
-          zip_code:   nil
+          zip_code:   nil,
+          country:    nil
         )
       end
 
@@ -116,7 +120,8 @@ describe 'Pinpoint::Address' do
           street:     '',
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -131,7 +136,8 @@ describe 'Pinpoint::Address' do
           street:     nil,
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -146,7 +152,8 @@ describe 'Pinpoint::Address' do
           street:     '919 Broadway',
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -161,7 +168,8 @@ describe 'Pinpoint::Address' do
           street:     nil,
           city:       nil,
           state:      nil,
-          zip_code:   nil
+          zip_code:   nil,
+          country:    nil
         )
       end
 
@@ -178,7 +186,8 @@ describe 'Pinpoint::Address' do
           street:     '',
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -193,7 +202,8 @@ describe 'Pinpoint::Address' do
           street:     nil,
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -208,7 +218,8 @@ describe 'Pinpoint::Address' do
           street:     '919 Broadway',
           city:       'Nashville',
           state:      'Tennessee',
-          zip_code:   '37203'
+          zip_code:   '37203',
+          country:    'US'
         )
       end
 
@@ -223,7 +234,8 @@ describe 'Pinpoint::Address' do
           street:     nil,
           city:       nil,
           state:      nil,
-          zip_code:   nil
+          zip_code:   nil,
+          country:    nil
         )
       end
 
